@@ -7,7 +7,7 @@ from chains.custom_chains import (
     get_ice_breaker_chain,
 )
 from third_parties.linkedin import scrape_linkedin_profile
-from third_parties.twitter import scrape_user_tweets, scrape_user_tweets_mock
+from third_parties.twitter import scrape_user_tweets_mock
 from output_parsers import (
     Summary,
     IceBreaker,
@@ -19,7 +19,9 @@ def ice_break_with(
     name: str,
 ) -> Tuple[Summary, TopicOfInterest, IceBreaker, str]:
     linkedin_username = linkedin_lookup_agent(name=name)
-    linkedin_data = scrape_linkedin_profile(linkedin_profile_url=linkedin_username)
+    linkedin_data = scrape_linkedin_profile(
+        linkedin_profile_url=linkedin_username, mock=True
+    )
 
     twitter_username = twitter_lookup_agent(name=name)
     tweets = scrape_user_tweets_mock(username=twitter_username)
