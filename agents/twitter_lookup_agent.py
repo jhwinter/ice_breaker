@@ -10,10 +10,10 @@ from dotenv import load_dotenv
 from tools.tools import get_profile_url_tavily
 
 load_dotenv()
-
+MODEL_NAME = "gemini-1.5-flash"
 
 def lookup(name: str) -> str:
-    llm = ChatGoogleGenerativeAI(temperature=0, model=os.environ["MODEL_NAME"])
+    llm = ChatGoogleGenerativeAI(temperature=0, model=MODEL_NAME)
     template = """
        given the name {name_of_person} I want you to find a link to their Twitter/ X profile page, and extract from it their username
        In Your Final answer only the person's username

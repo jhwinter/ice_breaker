@@ -12,12 +12,12 @@ from dotenv import load_dotenv
 from tools.tools import get_profile_url_tavily
 
 load_dotenv()
-
+MODEL_NAME = "gemini-1.5-flash"
 
 def lookup(name: str) -> str:
     llm = ChatGoogleGenerativeAI(
         temperature=0,
-        model=os.environ["MODEL_NAME"],
+        model=MODEL_NAME,
     )
     template = """given the full name {name_of_person} I want you to get it me a link to their Linkedin profile page.
                           Your answer should contain only a URL"""

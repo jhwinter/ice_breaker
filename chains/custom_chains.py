@@ -6,8 +6,9 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 
 from output_parsers import summary_parser, ice_breaker_parser, topics_of_interest_parser
 
-llm = ChatGoogleGenerativeAI(temperature=0, model=os.environ["MODEL_NAME"])
-llm_creative = ChatGoogleGenerativeAI(temperature=1, model=os.environ["MODEL_NAME"])
+MODEL_NAME = "gemini-1.5-flash"
+llm = ChatGoogleGenerativeAI(temperature=0, model=MODEL_NAME)
+llm_creative = ChatGoogleGenerativeAI(temperature=1, model=MODEL_NAME)
 
 
 def get_summary_chain() -> RunnableSequence:
